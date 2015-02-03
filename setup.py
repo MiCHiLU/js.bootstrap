@@ -2,7 +2,7 @@ from setuptools import setup, Command, find_packages
 import os
 import sys
 
-version = '3.3.1'
+version = '3.3.2'
 
 def read(*rnames):
     return open(os.path.join(os.path.dirname(__file__), *rnames)).read()

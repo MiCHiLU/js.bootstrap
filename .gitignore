@@ -1,3 +1,10 @@
+# bootstrap
+#
+# the npm module can be properly required.
+# https://github.com/twbs/bootstrap/releases/tag/v3.3.0
+js/bootstrap/resources/js/npm.js
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
