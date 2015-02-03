@@ -1,7 +1,7 @@
 from fanstatic import Library, Resource, Group
 from js.jquery import jquery
 
-library = Library('bootstrap', 'resources')
+library = Library('bootstrap_v3_3_2', 'resources')
 
 bootstrap_css = Resource(library, 'css/bootstrap.css',
                          minified='css/bootstrap.min.css')

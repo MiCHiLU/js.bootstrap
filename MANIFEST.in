@@ -1,4 +1,4 @@
-recursive-include js/bootstrap/resources/fonts *.*
-recursive-include js/bootstrap/resources *.js *.css *.png *.map
-recursive-include js/bootstrap *.txt
+recursive-include js/bootstrap_v3_3_2/resources/fonts *.*
+recursive-include js/bootstrap_v3_3_2/resources *.js *.css *.png *.map
+recursive-include js/bootstrap_v3_3_2 *.txt
 include *.txt *.rst

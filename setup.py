@@ -2,15 +2,16 @@ from setuptools import setup, Command, find_packages
 import os
 import sys
 
-version = '3.3.2'
+version = 'v3_3_2'
+patch_versioin = '0'
 
-def read(*rnames):
-    return open(os.path.join(os.path.dirname(__file__), *rnames)).read()
+def read(rname):
+    return open(os.path.join(os.path.dirname(__file__), rname)).read()
 
 long_description = (
     read('README.rst')
     + '\n' +
-    read('js', 'bootstrap', 'test_bootstrap.txt')
+    read('js/bootstrap_{0}/test_bootstrap.txt'.format(version))
     + '\n' +
     read('CHANGES.txt'))
 
@@ -71,14 +72,13 @@ setup(
         'Programming Language :: Python :: 3.3',
         'Development Status :: 5 - Production/Stable'
     ],
-    name='js.bootstrap',
-    version=version,
+    name='js.bootstrap_{0}'.format(version),
+    version=patch_versioin,
     description="fanstatic twitter bootstrap.",
     long_description=long_description,
     keywords='fanstatic twitter bootstrap redturtle',
     author='RedTurtle Developers',
-    url='https://github.com/RedTurtle/js.bootstrap',
-    author_email='sviluppoplone@redturtle.it',
+    url='https://github.com/MiCHiLU/js.bootstrap',
     license='BSD',
     packages=find_packages(),
     namespace_packages=['js'],
@@ -92,7 +92,7 @@ setup(
     cmdclass={'test': PyTest},
     entry_points={
         'fanstatic.libraries': [
-            'bootstrap = js.bootstrap:library',
+            'bootstrap_{0} = js.bootstrap_{0}:library'.format(version),
             ],
         },
     )

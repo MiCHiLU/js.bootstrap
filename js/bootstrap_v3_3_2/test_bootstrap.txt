@@ -10,20 +10,20 @@ information::
 You can import bootstrap from ``js.bootstrap`` and ``.need`` it
 where you want these resources to be included on a page::
 
-  >>> from js.bootstrap import bootstrap
+  >>> from js.bootstrap_v3_3_2 import bootstrap
   >>> bootstrap.need()
 
 If you want gradients and drop-shadows on your buttons, menus and panels,
 you can include the bootstrap_theme css::
 
-  >>> from js.bootstrap import bootstrap_theme
+  >>> from js.bootstrap_v3_3_2 import bootstrap_theme
   >>> bootstrap_theme.need()
 
 Render the inclusion::
 
   >>> from fanstatic import Inclusion
   >>> print(Inclusion(needed).render())
-  <link rel="stylesheet" type="text/css" href="http://localhost/fanstatic/bootstrap/css/bootstrap.css" />
-  <link rel="stylesheet" type="text/css" href="http://localhost/fanstatic/bootstrap/css/bootstrap-theme.css" />
+  <link rel="stylesheet" type="text/css" href="http://localhost/fanstatic/bootstrap_v3_3_2/css/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="http://localhost/fanstatic/bootstrap_v3_3_2/css/bootstrap-theme.css" />
   <script type="text/javascript" src="http://localhost/fanstatic/jquery/jquery.js"></script>
-  <script type="text/javascript" src="http://localhost/fanstatic/bootstrap/js/bootstrap.js"></script>
+  <script type="text/javascript" src="http://localhost/fanstatic/bootstrap_v3_3_2/js/bootstrap.js"></script>
