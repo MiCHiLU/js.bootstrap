@@ -1,15 +1,23 @@
-from setuptools import setup, Command
+from setuptools import setup, Command, find_packages
+import os
 import sys
 
+version = '3.3.1'
+
+def read(*rnames):
+    return open(os.path.join(os.path.dirname(__file__), *rnames)).read()
+
 long_description = (
-    open('README.txt').read()
+    read('README.rst')
     + '\n' +
-    open('CHANGES.txt').read())
+    read('js', 'bootstrap', 'test_bootstrap.txt')
+    + '\n' +
+    read('CHANGES.txt'))
 
 install_requires = [
-    'WebOb >= 1.2',
+    'fanstatic',
+    'js.jquery',
     'setuptools',
-    'shutilwhich',
 ]
 
 # We use tox to test fanstatic across python versions. We would like to
@@ -31,11 +39,7 @@ if sys.version_info < (2, 7):
     install_requires.append('argparse')
 
 tests_require = [
-    'closure',
-    'cssmin',
-    'jsmin',
     'pytest >= 2.3',
-    'pytest-capturelog',
 ]
 
 
@@ -55,9 +59,6 @@ class PyTest(Command):
         raise SystemExit(errno)
 
 setup(
-    name='fanstatic',
-    version='1.0a6.dev0',
-    description="Flexible static resources for web applications",
     classifiers=[
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
         'Topic :: Internet :: WWW/HTTP :: WSGI :: Middleware',
@@ -70,46 +71,28 @@ setup(
         'Programming Language :: Python :: 3.3',
         'Development Status :: 5 - Production/Stable'
     ],
-    keywords='',
-    author='Fanstatic Developers',
-    author_email='fanstatic@googlegroups.com',
+    name='js.bootstrap',
+    version=version,
+    description="fanstatic twitter bootstrap.",
     long_description=long_description,
+    keywords='fanstatic twitter bootstrap redturtle',
+    author='RedTurtle Developers',
+    url='https://github.com/RedTurtle/js.bootstrap',
+    author_email='sviluppoplone@redturtle.it',
     license='BSD',
-    url='http://fanstatic.org',
-    packages=['fanstatic'],
+    packages=find_packages(),
+    namespace_packages=['js'],
+    include_package_data=True,
     zip_safe=False,
     install_requires=install_requires,
     tests_require=tests_require,
     extras_require={
-        'closure': ['closure'],
-        'cssmin': ['cssmin'],
-        'jsmin': ['jsmin'],
         'test': tests_require,
     },
     cmdclass={'test': PyTest},
     entry_points={
-        'console_scripts': [
-            'fanstatic-compile = fanstatic.compiler:compile_resources',
-        ],
-        'paste.filter_app_factory': [
-            'fanstatic = fanstatic:make_fanstatic',
-            'injector = fanstatic:make_injector',
-        ],
-        'paste.app_factory': [
-            'serf = fanstatic:make_serf',
-            'publisher = fanstatic:make_publisher',
-        ],
-        'fanstatic.injectors': [
-            'topbottom = fanstatic.injector:TopBottomInjector',
-        ],
-        'fanstatic.compilers': [
-            'coffee = fanstatic.compiler:COFFEE_COMPILER',
-            'less = fanstatic.compiler:LESS_COMPILER',
-            'sass = fanstatic.compiler:SASS_COMPILER',
-        ],
-        'fanstatic.minifiers': [
-            'cssmin = fanstatic.compiler:CSSMIN_MINIFIER',
-            'jsmin = fanstatic.compiler:JSMIN_MINIFIER',
-            'closure = fanstatic.compiler:CLOSURE_MINIFIER',
-        ]
-    })
+        'fanstatic.libraries': [
+            'bootstrap = js.bootstrap:library',
+            ],
+        },
+    )
